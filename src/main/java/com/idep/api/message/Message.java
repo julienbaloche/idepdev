@@ -2,6 +2,7 @@ package com.idep.api.message;
 
 import javax.persistence.*;
 
+import com.idep.api.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,13 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String content;	
-		
+	private String content;
+
+	@ManyToOne
+	private User sender;
+
+	@ManyToOne
+	private User receiver;
+
+
 }
