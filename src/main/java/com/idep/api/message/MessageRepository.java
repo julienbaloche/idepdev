@@ -1,4 +1,4 @@
-package com.idep.api.test;
+package com.idep.api.message;
 
 import java.util.List;
 

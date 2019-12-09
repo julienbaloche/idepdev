@@ -12,11 +12,17 @@
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>IDEP - ISEP Techno Web Project </description>
 
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
+<!--	<properties>-->
+<!--		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
+<!--		<java.version>11</java.version>-->
+<!--	</properties>-->
 
 	<dependencies>
 		<dependency>
@@ -70,16 +76,32 @@
     		<artifactId>h2</artifactId>
     		<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 		
 		
 		
 	</dependencies>
 
 	<build>
+		<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<classifier>exec</classifier>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

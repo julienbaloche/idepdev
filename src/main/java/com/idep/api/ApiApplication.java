@@ -10,8 +10,8 @@ import com.idep.api.test.UserDB;
 public class ApiApplication {
 
 	public static void main(String[] args) {
-		UserDB.getSampleUserList();
-		ObjectDB.getSampleObjectList();
+//		UserDB.getSampleUserList();
+//		ObjectDB.getSampleObjectList();
 		SpringApplication.run(ApiApplication.class, args);
 	}
 
