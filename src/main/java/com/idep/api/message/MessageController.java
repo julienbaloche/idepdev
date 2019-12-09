@@ -3,6 +3,8 @@ package com.idep.api.message;
 import java.util.List;
 
 import com.idep.api.common.exceptionhandling.exception.ResourceNotFoundException;
+import com.idep.api.user.User;
+import com.idep.api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class MessageController {
 
     private final MessageRepository messageRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public MessageController(MessageRepository messageRepository) {
+    public MessageController(MessageRepository messageRepository, UserRepository userRepository) {
         this.messageRepository = messageRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("")
@@ -34,7 +38,16 @@ public class MessageController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message addMessage(@RequestBody Message newMessage) {
+    public Message addMessage(@RequestBody Message newMessage,
+                              @RequestParam("senderId") long senderId,
+                              @RequestParam("receiverId") long receiverId) {
+
+        User sender = this.userRepository.findById(senderId).orElseThrow(ResourceNotFoundException::new);
+        User receiver = this.userRepository.findById(receiverId).orElseThrow(ResourceNotFoundException::new);
+
+        newMessage.setSender(sender);
+        newMessage.setReceiver(receiver);
+
         return this.messageRepository.save(newMessage);
     }
 
