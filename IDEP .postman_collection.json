@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bbb19cf3-a474-478e-9856-2419cb07652f",
+		"_postman_id": "a631f768-42e6-4631-9396-f6b55549c9a0",
 		"name": "IDEP ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,7 +27,7 @@
 					"response": []
 				},
 				{
-					"name": "create",
+					"name": "send message from sender to receiver",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -40,7 +40,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"content\":\"yoo\"\n}",
+							"raw": "{\n\t\"content\":\"IntelliJ>Eclipse\",\n\t\"sender\": 4,\n\t\"receiver\":5\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -132,15 +132,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get messages sent by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get messages received by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Users",
+			"name": "User",
 			"item": [
 				{
-					"name": "Create",
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -153,7 +186,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"forename\": \"Matthieu\",\n\t\"surname\": \"Jacquand\",\n\t\"mail\": \"matthieu.jacquand@gmail.com\",\n\t\"balance\": 10,\n\t\"admin\": true\n}",
+							"raw": "{\n\t\"forename\": \"Andrew\",\n\t\"surname\": \"Pouret\",\n\t\"mail\": \"andrew.pouret@isep.fr\",\n\t\"balance\": 500000,\n\t\"admin\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -169,6 +202,28 @@
 							"path": [
 								"users"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []

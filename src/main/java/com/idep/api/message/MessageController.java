@@ -29,6 +29,24 @@ public class MessageController {
         return messages;
     }
 
+    @GetMapping("/sent-by")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Message> getAllMessagesSentByUser(@RequestParam("senderId") long senderId) {
+        User sender = this.userRepository.findById(senderId).orElseThrow(ResourceNotFoundException::new);
+        List<Message> messages = this.messageRepository.findBySender(sender);
+        return messages;
+    }
+
+    @GetMapping("/received-by")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Message> getAllMessagesReceivedByUser(@RequestParam("receiverId") long receiverId) {
+        User receiver = this.userRepository.findById(receiverId).orElseThrow(ResourceNotFoundException::new);
+        List<Message> messages = this.messageRepository.findByReceiver(receiver);
+        return messages;
+    }
+
+
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Message getMessageById(@PathVariable("id") long messageId) {
