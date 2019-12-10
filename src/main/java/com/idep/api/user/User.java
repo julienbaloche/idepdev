@@ -3,6 +3,7 @@ package com.idep.api.user;
 import javax.persistence.*;
 
 import com.idep.api.message.Message;
+import com.idep.api.object.Object;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,5 +41,8 @@ public class User {
     @OneToMany(mappedBy = "receiver", fetch = FetchType.LAZY)
     private List<Message> receivedMessages;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+    private List<Object> ownedObjects;
 
 }

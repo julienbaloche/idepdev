@@ -22,12 +22,15 @@ public class MessageController {
         this.userRepository = userRepository;
     }
 
+    //GETs
+
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<Message> getAllMessage() {
         List<Message> messages = this.messageRepository.findAll();
         return messages;
     }
+
 
     @GetMapping("/sent-by")
     @ResponseStatus(HttpStatus.OK)
@@ -54,6 +57,9 @@ public class MessageController {
         return message;
     }
 
+
+    //POSTs
+
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Message addMessage(@RequestBody Message newMessage,
@@ -68,6 +74,10 @@ public class MessageController {
 
         return this.messageRepository.save(newMessage);
     }
+
+
+    //DELETEs
+
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
