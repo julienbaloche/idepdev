@@ -230,6 +230,120 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Objects",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "declare object in owner",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\" :\"Dictionnaire\",\n\t\"author\":\"Larousse\",\n\t\"description\":\"tres bel oeuvre\",\n\t\"category\":\"LIVRE\",\n\t\"price\": 10\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/objects?ownerId=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"objects"
+							],
+							"query": [
+								{
+									"key": "ownerId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/objects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"objects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get objects owned by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/objects/owned-by?ownerId=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"objects",
+								"owned-by"
+							],
+							"query": [
+								{
+									"key": "ownerId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
