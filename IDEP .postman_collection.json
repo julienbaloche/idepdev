@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a631f768-42e6-4631-9396-f6b55549c9a0",
+		"_postman_id": "4911059a-6134-46d6-ba2f-e00746a65fd1",
 		"name": "IDEP ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -344,6 +344,152 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"Matmat\",\n\t\"password\": \"abcdE123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login of a user returns a JWT (token using container user information so that the server knows which user is sending the request).\n\nThe header of each request on the api except `/auth/login` and `/auth/register` must have an _Athorization Bearer_ HTTP header.\n\n\n_For example_: \n\nheader key:  `Authorization` \nheader value: `Bearer myToken.returnedBy.LoginRequest(if valid credentials)`"
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"Matmat\",\n\t\"password\": \"abcdE123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Each user *Should* be inserted in here in order to have the password to be hashed and verified in the authentication process.\n\nThe only *required* fields here are `username` and `password`.\n\nIt is also possible to include the additional fields :\n\n```json \n{\n\t\"surname\": \"string\",\n\t\"forename\": \"string\",\n\t\"username\": \"string\"\n\t\"password\": \"string\",\n\t\"mail\": \"string\"\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJNYXRtYXQiLCJleHAiOjE1Nzg0MzExMzIsImlhdCI6MTU3ODA3MTEzMn0.Kcfn7f85vZ19NvHWwbGdM5vyEyeQBARI154TFqomXt194FIjsUDX2Rr8ojPG0EN2I8s1fPB2o1sGm7GOZ4JQYQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJNYXRtYXQiLCJleHAiOjE1Nzg0MzExMzIsImlhdCI6MTU3ODA3MTEzMn0.Kcfn7f85vZ19NvHWwbGdM5vyEyeQBARI154TFqomXt194FIjsUDX2Rr8ojPG0EN2I8s1fPB2o1sGm7GOZ4JQYQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/auth/me",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"me"
+							]
+						},
+						"description": "The *logged in user*, from the provided JWT token.\n\nThe returned password is the user that is in the JWT. \nThis endpoint shows which username is connected."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJNYXRtYXQiLCJleHAiOjE1Nzg0MzExMzIsImlhdCI6MTU3ODA3MTEzMn0.Kcfn7f85vZ19NvHWwbGdM5vyEyeQBARI154TFqomXt194FIjsUDX2Rr8ojPG0EN2I8s1fPB2o1sGm7GOZ4JQYQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dbe02cb6-87d2-488a-b92d-17d0c6c62e74",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "81f6b6e0-b1de-4e9d-b9d3-b573373dbc60",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"protocolProfileBehavior": {}
