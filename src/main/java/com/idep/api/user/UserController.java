@@ -3,7 +3,6 @@ package com.idep.api.user;
 import java.util.List;
 
 import com.idep.api.common.exceptionhandling.exception.ResourceNotFoundException;
-import com.idep.api.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

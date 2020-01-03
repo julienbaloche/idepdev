@@ -8,7 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -17,8 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +29,7 @@ public class User {
 
     private String surname;
 
-    private String userName;
+    private String username;
 
     private String password;
 
@@ -36,6 +38,11 @@ public class User {
     private float balance;
 
     private boolean admin;
+
+    private boolean isAccountNonExpired;
+
+
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
@@ -48,5 +55,43 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Object> ownedObjects;
+
+
+    /**
+     *
+     * The following methods are used by the Spring Security Checks and have to be Overrided if the user can work.
+     *
+     */
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 
 }
