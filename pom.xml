@@ -96,17 +96,34 @@
 	<build>
 		<finalName>app</finalName>
 		<plugins>
+<!--			USED PREVIOUSLY (attempting to resolve : https://stackoverflow.com/questions/37400444/heroku-spring-boot-web-service-always-return-404-but-not-on-localhost/37401146) -->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>repackage</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<classifier>exec</classifier>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.2.1.RELEASE</version>
+				<configuration>
+					<mainClass>com.idep.api.ApiApplication</mainClass>
+					<layout>ZIP</layout>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>repackage</goal>
 						</goals>
-						<configuration>
-							<classifier>exec</classifier>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

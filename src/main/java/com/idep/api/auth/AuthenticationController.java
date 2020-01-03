@@ -1,8 +1,5 @@
 package com.idep.api.auth;
 
-
-import com.idep.api.common.exceptionhandling.exception.ResourceNotFoundException;
-import com.idep.api.common.exceptionhandling.validation.entityexists.EntityExists;
 import com.idep.api.user.User;
 import com.idep.api.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

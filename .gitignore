@@ -1,5 +1,6 @@
 HELP.md
 target/
+target
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -10,6 +11,7 @@ target/
 .factorypath
 .project
 .settings
+.vscode
 .springBeans
 .sts4-cache
 
