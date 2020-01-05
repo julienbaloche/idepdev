@@ -5,7 +5,7 @@
 Define as Environment variable for Database connection(via terminal or via IDE).
 example: 
 ``
-DB_URL=root:root@localhost:3306/idep
+export DB_URL=root:root@localhost:3306/idep
 ``
 
 
@@ -62,6 +62,10 @@ $ git add .
 $ git commit -am "make it better"
 $ git push heroku master`
 ```
+
+
+If it's another branch than master that you want to deploy you might need to do:
+`git push heroku matmat:master`
 
 
 
