@@ -66,6 +66,13 @@ public class AuthenticationController {
         return ResponseEntity.ok(principalUser);
     }
 
+        // test endpoint
+        @RequestMapping(value = "/test", method = RequestMethod.GET)
+        public ResponseEntity<String> test() {
+            return ResponseEntity.ok("The app is working");
+        }
+
+
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
