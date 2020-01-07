@@ -67,7 +67,7 @@ public class AuthenticationController {
     }
 
         // test endpoint
-        @RequestMapping(value = "/test", method = RequestMethod.GET)
+        @RequestMapping(value = "/test1", method = RequestMethod.GET)
         public ResponseEntity<String> test() {
             return ResponseEntity.ok("The app is working");
         }
