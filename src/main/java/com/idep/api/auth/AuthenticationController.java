@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="http///localhost:3000")
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
@@ -71,7 +71,6 @@ public class AuthenticationController {
         public ResponseEntity<String> test() {
             return ResponseEntity.ok("The app is working");
         }
-
 
     private void authenticate(String username, String password) throws Exception {
         try {
