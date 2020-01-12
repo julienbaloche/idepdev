@@ -58,12 +58,13 @@ public class AuthenticationController {
 
     //gets the details on the currently logged in user.
     @RequestMapping(value = "/me", method = RequestMethod.GET)
-    public ResponseEntity<?> me(Principal principalUser) {
+    public User me(Principal principalUser) {
         if (principalUser == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("no Principal Found, please put in a valid header with token (replaces xxxx) e.g 'Authorization:Bearer xxxx' ");
+            return null;
         }
-        return ResponseEntity.ok(principalUser);
+        String name = principalUser.getName();
+        User user = this.userRepository.findByUsername(name);
+        return user;
     }
 
         // test endpoint
