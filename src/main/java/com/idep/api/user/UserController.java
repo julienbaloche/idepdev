@@ -32,7 +32,7 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/modif/{id}")
+    @PatchMapping("/modif/{id}")
     @ResponseStatus(HttpStatus.OK)
     public User editUserById(@PathVariable("id") long userId,
                              @RequestParam("username") String username,

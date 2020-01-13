@@ -48,7 +48,7 @@ public class ObjectController {
         return object;
     }
 
-    @GetMapping("/modif/{id}")
+    @PatchMapping("/modif/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Object editObjectById(@PathVariable("id") long objectId,
                                  @RequestParam("title") String title,
@@ -81,7 +81,7 @@ public class ObjectController {
     }
     //DELETEs
 
-
+    @CrossOrigin(origins="*")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Object deleteObjectById(@PathVariable("id") long objectId) {
