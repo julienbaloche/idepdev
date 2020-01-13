@@ -32,6 +32,28 @@ public class UserController {
         return user;
     }
 
+    @GetMapping("/modif/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User editUserById(@PathVariable("id") long userId,
+                             @RequestParam("username") String username,
+                             @RequestParam("forename") String forename,
+                             @RequestParam("surname") String surname,
+                             @RequestParam("password") String password,
+                             @RequestParam("mail") String mail,
+                             @RequestParam("balance") float balance){
+        User user = this.userRepository.findById(userId).orElseThrow(ResourceNotFoundException::new);
+        user.setForename(username);
+        user.setForename(forename);
+        user.setBalance(balance);
+        user.setForename(surname);
+        user.setPassword(password);
+        user.setMail(mail);
+        return user;
+    }
+
+
+
+
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public User addUser(@RequestBody User newUser) {

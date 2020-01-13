@@ -48,6 +48,27 @@ public class ObjectController {
         return object;
     }
 
+    @GetMapping("/modif/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Object editObjectById(@PathVariable("id") long objectId,
+                                 @RequestParam("title") String title,
+                                 @RequestParam("author")String author,
+                                 @RequestParam("description")String description,
+                                 @RequestParam("category")ObjectCategory category,
+                                 @RequestParam("price")float price) {
+        Object object = this.objectRepository.findById(objectId).orElseThrow(ResourceNotFoundException::new);
+        object.setTitle(title);
+        object.setAuthor(author);
+        object.setDescription(description);
+        object.setCategory(category);
+        object.setPrice(price);
+        return object;
+    }
+
+
+
+
+
     //POSTs
 
     @PostMapping("")
