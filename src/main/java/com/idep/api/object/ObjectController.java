@@ -48,10 +48,10 @@ public class ObjectController {
         return object;
     }
 
-    @PatchMapping("/modif/{id}")
+    @PostMapping("/modif/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Object editObjectById(@PathVariable("id") long objectId,
-                                 @RequestParam("title") String title,
+                                 @RequestParam("title")String title,
                                  @RequestParam("author")String author,
                                  @RequestParam("description")String description,
                                  @RequestParam("category")ObjectCategory category,
