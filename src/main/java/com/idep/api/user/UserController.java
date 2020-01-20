@@ -36,19 +36,14 @@ public class UserController {
     @PatchMapping("/modif/{id}")
     @ResponseStatus(HttpStatus.OK)
     public User editUserById(@PathVariable("id") long userId,
-                             @RequestParam("username") String username,
-                             @RequestParam("forename") String forename,
-                             @RequestParam("surname") String surname,
-                             @RequestParam("password") String password,
-                             @RequestParam("mail") String mail,
-                             @RequestParam("balance") float balance){
+                             @RequestBody User requestuser)
+                             {
         User user = this.userRepository.findById(userId).orElseThrow(ResourceNotFoundException::new);
-        user.setForename(username);
-        user.setForename(forename);
-        user.setBalance(balance);
-        user.setForename(surname);
-        user.setPassword(password);
-        user.setMail(mail);
+        user.setForename(requestuser.getForename());
+        user.setSurname(requestuser.getSurname());
+        user.setBalance(requestuser.getBalance());
+        user.setPassword(requestuser.getPassword());
+        user.setMail(requestuser.getMail());
         return user;
     }
 

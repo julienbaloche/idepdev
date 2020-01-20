@@ -63,12 +63,10 @@ public class MessageController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message addMessage(@RequestBody Message newMessage,
-                              @RequestParam("senderId") long senderId,
-                              @RequestParam("receiverId") long receiverId) {
+    public Message addMessage(@RequestBody Message newMessage){
 
-        User sender = this.userRepository.findById(senderId).orElseThrow(ResourceNotFoundException::new);
-        User receiver = this.userRepository.findById(receiverId).orElseThrow(ResourceNotFoundException::new);
+        User sender = this.userRepository.findById(newMessage.getSender().getId()).orElseThrow(ResourceNotFoundException::new);
+        User receiver = this.userRepository.findById(newMessage.getReceiver().getId()).orElseThrow(ResourceNotFoundException::new);
 
         newMessage.setSender(sender);
         newMessage.setReceiver(receiver);
