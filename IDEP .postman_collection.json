@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4911059a-6134-46d6-ba2f-e00746a65fd1",
+		"_postman_id": "5058ccc9-0b62-4c1f-a3be-e26260a1652b",
 		"name": "IDEP ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -341,6 +341,58 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Upload Image to Object",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/andrewpouret/Downloads/images.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/objects/1/uploadFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"objects",
+								"1",
+								"uploadFile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/objects/1/deleteFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"objects",
+								"1",
+								"deleteFile"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -465,7 +517,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJNYXRtYXQiLCJleHAiOjE1Nzg0MzExMzIsImlhdCI6MTU3ODA3MTEzMn0.Kcfn7f85vZ19NvHWwbGdM5vyEyeQBARI154TFqomXt194FIjsUDX2Rr8ojPG0EN2I8s1fPB2o1sGm7GOZ4JQYQ",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJNYXRtYXQiLCJleHAiOjE1Nzk4NzY4NTIsImlhdCI6MTU3OTUxNjg1Mn0.YGhvIsF03bZurg6sVq4J_PZz-VI9j41kuxEycPiewO_wSnqr0FQZbQgQ5RLpU3zuuUQ6SpguHFTak1FmstpQgg",
 				"type": "string"
 			}
 		]
