@@ -28,8 +28,12 @@ public class Object {
 
     private String description;
 
+    private String imageUrl;
+
     @Enumerated(EnumType.STRING)
     private ObjectCategory category ;
+
+
 
     private float price;
 
