@@ -79,13 +79,11 @@ public class TransactionController {
 
         float balanceBeforeTransacSeller = seller.getBalance();
         float balanceBeforeTransacBorrower = borrower.getBalance();
-        float transactionAmount = newTransaction.getAmount();
+        float transactionAmount = object.getPrice();
 
         seller.setBalance(balanceBeforeTransacSeller + transactionAmount);
         borrower.setBalance(balanceBeforeTransacBorrower - transactionAmount);
-        newTransaction.setSeller(seller);
-        newTransaction.setBorrower(borrower);
-        newTransaction.setObjectFromSellerToBorrowerId(object.getId());
+
         object.setOwner(borrower);
 
 
