@@ -70,14 +70,11 @@ public class TransactionController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Transaction addTransaction(@RequestBody Transaction newTransaction,
-                                      @RequestParam("objectId") long  objectId,
-                                      @RequestParam("sellerId") long sellerId,
-                                      @RequestParam("borrowerId") long borrowerId) {
+    public Transaction addTransaction(@RequestBody Transaction newTransaction) {
 
-        Object object = this.objectRepository.findById(objectId).orElseThrow(ResourceNotFoundException::new);
-        User seller = this.userRepository.findById(sellerId).orElseThrow(ResourceNotFoundException::new);
-        User borrower = this.userRepository.findById(borrowerId).orElseThrow(ResourceNotFoundException::new);
+        Object object = this.objectRepository.findById(newTransaction.getObjectFromSellerToBorrowerId()).orElseThrow(ResourceNotFoundException::new);
+        User seller = this.userRepository.findById(newTransaction.getSeller().getId()).orElseThrow(ResourceNotFoundException::new);
+        User borrower = this.userRepository.findById(newTransaction.getBorrower().getId()).orElseThrow(ResourceNotFoundException::new);
 
 
         float balanceBeforeTransacSeller = seller.getBalance();
