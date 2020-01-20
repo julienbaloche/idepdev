@@ -51,20 +51,16 @@ public class ObjectController {
         return object;
     }
 
-    @PostMapping("/modif/{id}")
+    @PatchMapping ("/modif/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Object editObjectById(@PathVariable("id") long objectId,
-                                 @RequestParam("title") String title,
-                                 @RequestParam("author") String author,
-                                 @RequestParam("description") String description,
-                                 @RequestParam("category") ObjectCategory category,
-                                 @RequestParam("price") float price) {
+                                 @RequestBody Object requestobj) {
         Object object = this.objectRepository.findById(objectId).orElseThrow(ResourceNotFoundException::new);
-        object.setTitle(title);
-        object.setAuthor(author);
-        object.setDescription(description);
-        object.setCategory(category);
-        object.setPrice(price);
+        object.setTitle(requestobj.getTitle());
+        object.setAuthor(requestobj.getAuthor());
+        object.setDescription(requestobj.getDescription());
+        object.setCategory(requestobj.getCategory());
+        object.setPrice(requestobj.getPrice());
         return object;
     }
 
