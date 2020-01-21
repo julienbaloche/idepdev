@@ -61,7 +61,9 @@ public class ObjectController {
         object.setDescription(requestobj.getDescription());
         object.setCategory(requestobj.getCategory());
         object.setPrice(requestobj.getPrice());
+        this.objectRepository.save(object);
         return object;
+
     }
 
 
